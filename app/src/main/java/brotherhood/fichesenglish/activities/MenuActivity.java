@@ -1,7 +1,9 @@
-package brotherhood.fichesenglish;
+package brotherhood.fichesenglish.activities;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+
+import brotherhood.fichesenglish.R;
 
 public class MenuActivity extends ActionBarActivity {
 
