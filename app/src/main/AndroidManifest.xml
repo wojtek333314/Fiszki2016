@@ -15,6 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.PreGameActivity" >
+        </activity>
+        <activity android:name=".activities.StatisticsActivity" >
+        </activity>
+        <activity android:name=".activities.AddFischeActivity" >
+        </activity>
+        <activity android:name=".activities.game.GameActivity" >
+        </activity>
     </application>
 
 </manifest>
