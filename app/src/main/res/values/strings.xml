@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Fiszki</string>
+    <string name="download_data">Pobieranie danych..</string>
 </resources>
