@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/showResponse"
-        android:id="@+id/show_button"
+        android:id="@+id/answerButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/button_2" />
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:id="@+id/afterResponseView"
+        android:id="@+id/afterAnswerView"
         android:visibility="invisible">
 
         <Button
@@ -53,9 +53,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/show_button"
-        android:layout_alignEnd="@+id/show_button"
-        android:layout_above="@+id/afterResponseView">
+        android:layout_alignRight="@+id/answerButton"
+        android:layout_alignEnd="@+id/answerButton"
+        android:layout_above="@+id/afterAnswerView">
 
         <brotherhood.fichesenglish.utils.SquareLayout
             android:layout_width="match_parent"
@@ -63,17 +63,35 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:background="@color/cardColor"
-            android:layout_margin="@dimen/FicheButtonBigPadding">
+            android:layout_margin="@dimen/FicheButtonBigPadding"
+            android:id="@+id/relativeLayout">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:id="@+id/imageView3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/soundButton"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/listen" />
+                android:src="@drawable/listen"
+                android:layout_margin="@dimen/layout_margin_normal" />
+
         </brotherhood.fichesenglish.utils.SquareLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Medium Text"
+            android:id="@+id/ficheTask"
+            android:layout_alignLeft="@+id/relativeLayout"
+            android:layout_alignStart="@+id/relativeLayout"
+            android:layout_alignParentTop="false"
+            android:layout_alignRight="@+id/relativeLayout"
+            android:layout_alignEnd="@+id/relativeLayout"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_margin="@dimen/layout_margin_normal" />
 
     </RelativeLayout>
 

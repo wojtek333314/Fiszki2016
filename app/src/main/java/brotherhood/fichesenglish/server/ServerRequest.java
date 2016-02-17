@@ -54,6 +54,7 @@ public class ServerRequest extends AsyncTask<Void, Void, String> {
             connection.setRequestMethod("POST");
             connection.setDoInput(true);
             connection.setDoOutput(true);
+            connection.setConnectTimeout(10000);
             HashMap<String,String> params = new HashMap<String,String>();
             for (String key : parameters.getParameters().keySet()) {
                 params.put(key, parameters.getParameters().get(key));
