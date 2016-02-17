@@ -17,7 +17,6 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void customOnCreate() {
         setContentView(R.layout.activity_splash);
-        System.out.println("ON CREATE");
         checkDatabaseVersion();
     }
 
@@ -29,12 +28,11 @@ public class SplashActivity extends BaseActivity {
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                try {System.out.println(getSharedPrefsHelper().getString("version"));
+                                try {
                                     JSONArray jsonArray = new JSONObject(json).getJSONObject("data").getJSONArray("json");
                                     JSONObject jsonObject = new JSONObject(json).getJSONObject("data");
                                     String version = jsonObject.getString("version");
-                                    System.out.println("MOJA POBRANA WERSJA" + version);
-                                    getSharedPrefsHelper().putString("version",version);
+                                    getSharedPrefsHelper().putString("version", version);
                                     for (int i = 0; i < jsonArray.length(); i++) {
                                         JSONObject singleObject = jsonArray.getJSONObject(i);
                                         getDatabaseHelper().saveSingleFiche(singleObject);
@@ -47,8 +45,6 @@ public class SplashActivity extends BaseActivity {
                                 startActivity(toMenuActivity);
                             }
                         }).start();
-
-
                     }
 
                     @Override
@@ -68,7 +64,6 @@ public class SplashActivity extends BaseActivity {
                             String version = jsonObject.getJSONObject("data").getString("version");
                             String localVersion = getSharedPrefsHelper().getString("version");
 
-                          //  System.out.println(localVersion+":"+version);
                             if (localVersion != null && localVersion.equals(version)) {
                                 Intent toMenuActivity = new Intent(SplashActivity.this, MenuActivity.class);
                                 startActivity(toMenuActivity);
@@ -78,8 +73,6 @@ public class SplashActivity extends BaseActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
                     }
 
                     @Override
@@ -88,7 +81,6 @@ public class SplashActivity extends BaseActivity {
                     }
                 }).execute();
     }
-
 }
 
 
