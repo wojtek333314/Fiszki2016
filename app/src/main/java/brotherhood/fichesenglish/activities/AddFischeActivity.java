@@ -1,6 +1,5 @@
 package brotherhood.fichesenglish.activities;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +17,6 @@ public class AddFischeActivity extends BaseActivity {
     protected void customOnCreate() {
         setContentView(R.layout.activity_add_fische);
         Button bt_add = (Button)findViewById(R.id.bt_add);
-        Button bt_back = (Button)findViewById(R.id.bt_back);
         final EditText et_add_pl = (EditText)findViewById(R.id.et_add_pl);
         final EditText et_add_eng = (EditText)findViewById(R.id.et_add_eng);
 
@@ -41,14 +39,6 @@ public class AddFischeActivity extends BaseActivity {
 
                     }
                 }).execute();
-            }
-        });
-
-        bt_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent back = new Intent(AddFischeActivity.this,MenuActivity.class);
-                startActivity(back);
             }
         });
 

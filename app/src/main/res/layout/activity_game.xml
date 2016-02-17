@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="brotherhood.fichesenglish.activities.game.GameActivity"
-    android:padding="@dimen/layout_margin_normal">
+    tools:context="brotherhood.fichesenglish.activities.game.GameActivity">
 
     <Button
         android:layout_width="match_parent"
@@ -55,7 +54,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/answerButton"
         android:layout_alignEnd="@+id/answerButton"
-        android:layout_above="@+id/afterAnswerView">
+        android:layout_above="@+id/afterAnswerView"
+        android:padding="@dimen/layout_margin_normal">
 
         <brotherhood.fichesenglish.utils.SquareLayout
             android:layout_width="match_parent"
