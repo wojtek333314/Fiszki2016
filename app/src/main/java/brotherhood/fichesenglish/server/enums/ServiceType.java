@@ -6,7 +6,7 @@ public enum ServiceType {
     CHECK_VERSION,
     ADD_FICHE;
 
-    private static final String SERVER_PATH = "http://www.datastore.waw.pl/Fiche2016/";
+    public static final String SERVER_PATH = "http://www.datastore.waw.pl/Fiche2016/";
 
     public static String getURL(ServiceType serviceType){
         switch(serviceType){
