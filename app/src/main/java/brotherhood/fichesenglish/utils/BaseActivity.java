@@ -39,4 +39,13 @@ public abstract class BaseActivity extends Activity {
     }
 
     protected abstract void customOnCreate();
+
+    protected void showInfoMsg(String title,String msg){
+
+    }
+
+    protected boolean isOnline(){
+        return false;
+    }
+
 }

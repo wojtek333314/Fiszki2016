@@ -20,7 +20,17 @@ public class AddFischeActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 new ServerRequest(ServiceType.ADD_FICHE, new Parameters().addParam("pl","słóweczko")
-                        .addParam("ang","angielusie").addParam("category","kategoryjka").addParam("soundPath","scieżka"));
+                        .addParam("ang","angielusie").addParam("category","kategoryjka").addParam("soundPath","scieżka")).setServerRequestListener(new ServerRequest.ServerRequestListener() {
+                    @Override
+                    public void onSuccess(String json) {
+                        System.out.println(json);
+                    }
+
+                    @Override
+                    public void onError(int code, String description) {
+
+                    }
+                }).execute();
             }
         });
 
