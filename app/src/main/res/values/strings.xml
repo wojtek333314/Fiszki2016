@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Fiszki</string>
     <string name="download_data">Pobieranie danych..</string>
+    <string name="plToEng">Najpierw polska strona fiszki potem angielska</string>
+    <string name="engToPl">Najpierw angielska strona fiszki potem polska</string>
 </resources>
