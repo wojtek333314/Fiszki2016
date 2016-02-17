@@ -17,7 +17,15 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void customOnCreate() {
         setContentView(R.layout.activity_splash);
-        checkDatabaseVersion();
+        if(isOnline())
+            checkDatabaseVersion();
+        else
+        {
+            //todo 1.ustawienie tekstu zamiast" ladowanie danych" na "Brak dostepu do sieci\nladowanie danych lokalnych" i przejscie do menu po 3s.
+            //todo 2.stworzenie w jakis sposob przy pierwszym ladowaniu apki podstawowej bazy danych ladowanej z pliku do pamieci tel
+            Intent toMenuActivity = new Intent(SplashActivity.this, MenuActivity.class);
+            startActivity(toMenuActivity);
+        }
     }
 
     public void downloadDatabase() {

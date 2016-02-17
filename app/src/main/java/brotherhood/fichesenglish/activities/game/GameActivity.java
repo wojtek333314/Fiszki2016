@@ -1,5 +1,6 @@
 package brotherhood.fichesenglish.activities.game;
 
+import android.content.DialogInterface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.view.View;
@@ -51,17 +52,7 @@ public class GameActivity extends BaseActivity {
         soundButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    MediaPlayer player = new MediaPlayer();
-                    player.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    player.setDataSource(ServiceType.SERVER_PATH + "sound/" + currentFiche.getSoundPath());
-                    player.prepare();
-                    player.start();
-
-
-                } catch (Exception e) {
-                    // TODO: handle exception
-                }
+                playSound();
             }
         });
     }
@@ -89,7 +80,25 @@ public class GameActivity extends BaseActivity {
     }
 
     private void playSound() {
+        if (!isOnline()) {
+            showOkMsgBox("", "No internet connection", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
 
+                }
+            });
+            return;
+        }
+
+        try {
+            MediaPlayer player = new MediaPlayer();
+            player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            player.setDataSource(ServiceType.SERVER_PATH + "sound/" + currentFiche.getSoundPath());
+            player.prepare();
+            player.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void setGameMode(GameMode gameMode) {

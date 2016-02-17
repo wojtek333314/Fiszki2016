@@ -1,6 +1,11 @@
 package brotherhood.fichesenglish.utils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import brotherhood.fichesenglish.R;
@@ -13,6 +18,7 @@ import brotherhood.fichesenglish.database.SharedPrefsHelper;
 public abstract class BaseActivity extends Activity {
     private static SharedPrefsHelper sharedPrefsHelper;
     private static DatabaseHelper databaseHelper;
+    private static AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +46,52 @@ public abstract class BaseActivity extends Activity {
 
     protected abstract void customOnCreate();
 
-    protected void showInfoMsg(String title,String msg){
+    protected void showOkMsgBox(String title, String msg, DialogInterface.OnClickListener clickListener) {
+        if (alertDialog != null && alertDialog.isShowing())
+            return;
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        if (title != null && !title.equals(""))
+            builder.setTitle(title);
+        builder.setMessage(msg);
+        builder.setPositiveButton(getString(R.string.ok_label), clickListener);
+        alertDialog = builder.create();
+        alertDialog.show();
     }
 
-    protected boolean isOnline(){
-        return false;
+    protected void showMsgBox(String title, String msg, String buttonText, DialogInterface.OnClickListener clickListener) {
+        if (alertDialog != null && alertDialog.isShowing())
+            return;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        if (title != null && !title.equals(""))
+            builder.setTitle(title);
+        builder.setMessage(msg);
+        builder.setPositiveButton(buttonText, clickListener);
+        alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    protected void showYesNoMsgBox(String title, String msg
+            , DialogInterface.OnClickListener yesButtonClickListener, DialogInterface.OnClickListener noButtonClickListener) {
+        if (alertDialog != null && alertDialog.isShowing())
+            return;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        if (title != null && !title.equals(""))
+            builder.setTitle(title);
+        builder.setMessage(msg);
+        builder.setPositiveButton(getString(R.string.yes_label), yesButtonClickListener);
+        builder.setNegativeButton(getString(R.string.no_label), noButtonClickListener);
+        alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    protected boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
 }

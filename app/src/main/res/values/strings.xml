@@ -6,4 +6,7 @@
     <string name="showResponse">Pokaż odpowiedź</string>
     <string name="know">Wiedziałem</string>
     <string name="dont_know">Nie wiedziałem</string>
+    <string name="yes_label">Tak</string>
+    <string name="no_label">Nie</string>
+    <string name="ok_label">OK</string>
 </resources>
