@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import brotherhood.fichesenglish.R;
+import brotherhood.fichesenglish.database.DatabaseHelper;
 
 public class MenuActivity extends ActionBarActivity {
 
@@ -19,7 +20,9 @@ public class MenuActivity extends ActionBarActivity {
         Button bt_stats = (Button) findViewById(R.id.bt_stats);
         Button bt_addFishe = (Button) findViewById(R.id.bt_addFische);
 
+        DatabaseHelper dtbh = new DatabaseHelper(getApplicationContext());
 
+        System.out.println(dtbh.getFichesFromDatabase().get(0).getEngValue());
 
         bt_practice.setOnClickListener(new View.OnClickListener() {
             @Override

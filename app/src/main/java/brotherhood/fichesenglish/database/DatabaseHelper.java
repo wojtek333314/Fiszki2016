@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -26,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + PL_VALUE + " TEXT, "
                     + ENG_VALUE + " TEXT, "
                     + CATEGORY_VALUE + " TEXT, "
-                    + SOUND_PATH + " TEXT, )";
+                    + SOUND_PATH + " TEXT )";
 
 
     public DatabaseHelper(Context context) {
@@ -50,12 +53,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Pobiera cala baze danych z lokalnej pamieci urzadzenia i zwraca ja w postaci ArrayListy zawierajacej
-     * CurrencyModel'e.
+     * Model'e.
      *
      * @return
      */
     public ArrayList<FicheModel> getFichesFromDatabase() {
-        ArrayList<FicheModel> listDTOtoEntity = new ArrayList<FicheModel>();
+        ArrayList<FicheModel> entityList = new ArrayList<FicheModel>();
         Cursor cursor = getReadableDatabase().rawQuery("select * from " + TABLE_NAME, null);
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
@@ -76,13 +79,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 model.setEngValue(engValue);
                 model.setCategory(categoryValue);
                 model.setSoundPath(soundValue);
-                listDTOtoEntity.add(model);
+                entityList.add(model);
                 cursor.moveToNext();
             }
             getReadableDatabase().close();
         }
 
-        return listDTOtoEntity;
+        return entityList;
     }
 
 
@@ -100,12 +103,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(PL_VALUE, model.getPlValue());
                 values.put(ENG_VALUE, model.getEngValue());
                 values.put(CATEGORY_VALUE, model.getCategory());
-                values.put(SOUND_PATH,model.getSoundPath());
+                values.put(SOUND_PATH, model.getSoundPath());
 
                 db.insertWithOnConflict(TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);//wrzuca do bazy danych,
                 //jesli dane istanitly to nadpisuje
             }
         }
+    }
+
+    public void saveSingleFiche(JSONObject singleFicheJSONObject) throws JSONException {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(ID, singleFicheJSONObject.getString("id"));
+        values.put(PL_VALUE, singleFicheJSONObject.getString("pl"));
+        values.put(ENG_VALUE, singleFicheJSONObject.getString("eng"));
+        values.put(CATEGORY_VALUE, singleFicheJSONObject.getString("category"));
+        values.put(SOUND_PATH, singleFicheJSONObject.getString("soundPath"));
+
+        db.insertWithOnConflict(TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);//wrzuca do bazy danych,
+        //jesli dane istanitly to nadpisuje
+
     }
 
     /**
