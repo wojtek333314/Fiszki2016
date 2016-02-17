@@ -1,20 +1,17 @@
 package brotherhood.fichesenglish.activities;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import brotherhood.fichesenglish.R;
 import brotherhood.fichesenglish.activities.game.GameActivity;
+import brotherhood.fichesenglish.utils.BaseActivity;
 
-public class PreGameActivity extends ActionBarActivity {
+public class PreGameActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void customOnCreate() {
         setContentView(R.layout.activity_pre_game);
         Button bt_createFishe = (Button)findViewById(R.id.bt_learnNew);
         Button bt_repeatFische = (Button)findViewById(R.id.bt_repeatFische);
@@ -36,7 +33,5 @@ public class PreGameActivity extends ActionBarActivity {
                 startActivity(toGameActivity);
             }
         });
-
-
     }
 }

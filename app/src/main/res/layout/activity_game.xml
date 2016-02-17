@@ -1,10 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="brotherhood.fichesenglish.activities.game.GameActivity">
+    android:layout_height="match_parent"
+    tools:context="brotherhood.fichesenglish.activities.game.GameActivity"
+    android:padding="@dimen/layout_margin_normal">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/showResponse"
+        android:id="@+id/show_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_2" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/afterResponseView"
+        android:visibility="invisible">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/know"
+            android:id="@+id/know_button"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_1"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/layout_margin_normal"
+            style="@style/FicheButtonNormal" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/dont_know"
+            android:id="@+id/dont_know_button"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_3"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/layout_margin_normal"
+            style="@style/FicheButtonNormal"
+            android:singleLine="false" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/show_button"
+        android:layout_alignEnd="@+id/show_button"
+        android:layout_above="@+id/afterResponseView">
+
+        <brotherhood.fichesenglish.utils.SquareLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/cardColor"
+            android:layout_margin="@dimen/FicheButtonBigPadding">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/imageView3"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/listen" />
+        </brotherhood.fichesenglish.utils.SquareLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -3,4 +3,7 @@
     <string name="download_data">Pobieranie danych..</string>
     <string name="plToEng">Najpierw polska strona fiszki potem angielska</string>
     <string name="engToPl">Najpierw angielska strona fiszki potem polska</string>
+    <string name="showResponse">Pokaż odpowiedź</string>
+    <string name="know">Wiedziałem</string>
+    <string name="dont_know">Nie wiedziałem</string>
 </resources>

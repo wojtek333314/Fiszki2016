@@ -24,7 +24,7 @@
     </style>
 
     <style name="FicheButtonNormal" parent="FicheButtonBig">
-        <item name="android:padding">@dimen/layout_margin_normal</item>
+        <item name="android:padding">@dimen/FicheButtonNormalPadding</item>
     </style>
     
 </resources>

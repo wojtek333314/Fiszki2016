@@ -1,15 +1,12 @@
 package brotherhood.fichesenglish.activities;
 
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-
 import brotherhood.fichesenglish.R;
+import brotherhood.fichesenglish.utils.BaseActivity;
 
-public class StatisticsActivity extends ActionBarActivity {
+public class StatisticsActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void customOnCreate() {
         setContentView(R.layout.activity_statistics);
     }
 }

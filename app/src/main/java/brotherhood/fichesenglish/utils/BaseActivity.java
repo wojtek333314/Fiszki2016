@@ -24,7 +24,11 @@ public abstract class BaseActivity extends Activity {
         customOnCreate();
     }
 
-    protected abstract void customOnCreate();
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
 
     protected static SharedPrefsHelper getSharedPrefsHelper() {
         return sharedPrefsHelper;
@@ -33,4 +37,6 @@ public abstract class BaseActivity extends Activity {
     protected static DatabaseHelper getDatabaseHelper() {
         return databaseHelper;
     }
+
+    protected abstract void customOnCreate();
 }

@@ -5,4 +5,5 @@
     <color name="mainColorYellow">#FF8E00</color>
     <color name="mainColorBlue">#0166A8</color>
     <color name="mainColorGreen">#00B65E</color>
+    <color name="cardColor">#ffee50</color>
 </resources>

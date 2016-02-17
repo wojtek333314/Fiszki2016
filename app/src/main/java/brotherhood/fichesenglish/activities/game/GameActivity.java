@@ -1,15 +1,12 @@
 package brotherhood.fichesenglish.activities.game;
 
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-
 import brotherhood.fichesenglish.R;
+import brotherhood.fichesenglish.utils.BaseActivity;
 
-public class GameActivity extends ActionBarActivity {
+public class GameActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void customOnCreate() {
         setContentView(R.layout.activity_game);
     }
 }

@@ -4,4 +4,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="layout_margin_normal">8dp</dimen>
     <dimen name="FicheButtonBigPadding">25dp</dimen>
+    <dimen name="FicheButtonNormalPadding">12dp</dimen>
 </resources>
