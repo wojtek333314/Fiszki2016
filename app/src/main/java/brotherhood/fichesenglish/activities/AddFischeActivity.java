@@ -4,6 +4,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import brotherhood.fichesenglish.R;
 import brotherhood.fichesenglish.server.ServerRequest;
 import brotherhood.fichesenglish.server.enums.ServiceType;
@@ -31,7 +34,17 @@ public class AddFischeActivity extends BaseActivity {
                         .setServerRequestListener(new ServerRequest.ServerRequestListener() {
 
                     @Override
-                    public void onSuccess(String json) {
+                    public void onSuccess(String json){
+                        JSONObject response  = null;
+                        try {
+                            response = new JSONObject(json);
+                            if(response.getBoolean("data")){
+                                showOkMsgBox("","Pobralem",null);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                     }
 
                     @Override
