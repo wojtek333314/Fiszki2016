@@ -9,4 +9,17 @@
     <string name="yes_label">Tak</string>
     <string name="no_label">Nie</string>
     <string name="ok_label">OK</string>
+    <string name="polish_word">Polskie słowo</string>
+    <string name="english_word">Angielskie słowo</string>
+    <string name="create_fiche">Stwórz fiszkę</string>
+
+    <string name="add_fiche_instruction">Ty możesz zostać współtwóprcą aplikacji!
+    Wystarczy, że dodasz wymyśloną przez siebie fiszkę, a my po jej zweryfikowaniu dodamy ją do bazy!</string>
+
+
+    <string name="fill_all_fields">Uzupełnij wszystkie pola</string>
+    <string name="download_actual_database_version">Pobrano aktualną wersję bazy danych</string>
+    <string name="no_network">Brak połączenia z siecią!</string>
+    <string name="check_network">Sprawdź czy masz dostęp do sieci</string>
+    <string name="succesfully_added">Fiszka została dodana do bazy danych</string>
 </resources>
