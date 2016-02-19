@@ -5,11 +5,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import brotherhood.fichesenglish.activities.game.enums.GameMode;
+import brotherhood.fichesenglish.models.FicheModel;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 2; //wersja bazy danych wymagana od funkcji tworzacej baze
@@ -21,6 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String ENG_VALUE = "eng";
     private static final String CATEGORY_VALUE = "category";
     private static final String SOUND_PATH = "soundPath";
+    private static final String STATUS = "status";
 
 
     private static final String TABLE_CREATE_EXPRESSION =
@@ -29,6 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + PL_VALUE + " TEXT, "
                     + ENG_VALUE + " TEXT, "
                     + CATEGORY_VALUE + " TEXT, "
+                    + STATUS + " INT, "
                     + SOUND_PATH + " TEXT )";
 
 
@@ -57,9 +63,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      *
      * @return
      */
-    public ArrayList<FicheModel> getFichesFromDatabase() {
+    public ArrayList<FicheModel> getFichesFromDatabase(GameMode gameMode) {
+        String whereClausure = gameMode == GameMode.REPEAT_MODE ? " where status = 1" : " ";
+
         ArrayList<FicheModel> entityList = new ArrayList<FicheModel>();
-        Cursor cursor = getReadableDatabase().rawQuery("select * from " + TABLE_NAME, null);
+        Cursor cursor = getReadableDatabase().rawQuery("select * from " + TABLE_NAME + whereClausure, null);
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
                 int id = cursor.getInt(cursor
@@ -72,6 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         .getColumnIndex(CATEGORY_VALUE));
                 String soundValue = cursor.getString(cursor
                         .getColumnIndex(SOUND_PATH));
+                int status = cursor.getInt(cursor.getColumnIndex(STATUS));
 
                 FicheModel model = new FicheModel();
                 model.setId(id);
@@ -79,6 +88,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 model.setEngValue(engValue);
                 model.setCategory(categoryValue);
                 model.setSoundPath(soundValue);
+                model.setStatus(FicheModel.Status.defineStatus(status));
                 entityList.add(model);
                 cursor.moveToNext();
             }
@@ -89,28 +99,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    /**
-     * Zapisuje do bazy danych obiekty listy CurrencyModel. Potem beda te dane wykorzystywane w Settings i Currencies activity.
-     *
-     * @param modelsEntity
-     */
-    public void saveFicheModelList(ArrayList<FicheModel> modelsEntity) {
-        if (modelsEntity != null) {
-            SQLiteDatabase db = getWritableDatabase();
-            for (FicheModel model : modelsEntity) {
-                ContentValues values = new ContentValues();
-                values.put(ID, model.getId());
-                values.put(PL_VALUE, model.getPlValue());
-                values.put(ENG_VALUE, model.getEngValue());
-                values.put(CATEGORY_VALUE, model.getCategory());
-                values.put(SOUND_PATH, model.getSoundPath());
-
-                db.insertWithOnConflict(TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);//wrzuca do bazy danych,
-                //jesli dane istanitly to nadpisuje
-            }
-        }
-    }
-
     public void saveSingleFiche(JSONObject singleFicheJSONObject) throws JSONException {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -119,10 +107,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ENG_VALUE, singleFicheJSONObject.getString("eng"));
         values.put(CATEGORY_VALUE, singleFicheJSONObject.getString("category"));
         values.put(SOUND_PATH, singleFicheJSONObject.getString("soundPath"));
+        values.put(STATUS, 0);
 
         db.insertWithOnConflict(TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);//wrzuca do bazy danych,
         //jesli dane istanitly to nadpisuje
 
+    }
+
+    public void saveSingleFiche(FicheModel singleFiche) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(ID, singleFiche.getId());
+        values.put(PL_VALUE, singleFiche.getPlValue());
+        values.put(ENG_VALUE, singleFiche.getEngValue());
+        values.put(CATEGORY_VALUE, singleFiche.getCategory());
+        values.put(SOUND_PATH, singleFiche.getSoundPath());
+        values.put(STATUS, FicheModel.Status.getStatusCode(singleFiche.getStatus()));
+
+        db.insertWithOnConflict(TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);//wrzuca do bazy danych,
+    }
+
+    public long getLearnedFichesCount() {
+        SQLiteStatement s = getReadableDatabase().compileStatement("select count(*) from " + TABLE_NAME
+                + " where status=1; ");
+        return s.simpleQueryForLong();
     }
 
     /**

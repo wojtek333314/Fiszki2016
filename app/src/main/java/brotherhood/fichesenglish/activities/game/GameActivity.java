@@ -12,40 +12,46 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import brotherhood.fichesenglish.R;
+import brotherhood.fichesenglish.activities.game.enums.FicheSide;
 import brotherhood.fichesenglish.activities.game.enums.GameMode;
-import brotherhood.fichesenglish.database.FicheModel;
+import brotherhood.fichesenglish.activities.game.enums.LanguageMode;
+import brotherhood.fichesenglish.models.FicheModel;
 import brotherhood.fichesenglish.server.enums.ServiceType;
 import brotherhood.fichesenglish.utils.BaseActivity;
 
 public class GameActivity extends BaseActivity {
-    private static GameMode gameMode;
-    private static ArrayList<FicheModel> fiches;
+    private static LanguageMode LANGUAGE_MODE;
+    private static GameMode GAME_MODE;
+    private ArrayList<FicheModel> fiches;
 
     private TextView ficheText;
     private Button showAnswer;
     private Button knowButton;
     private Button dontKnowButton;
     private ImageView soundButton;
-    private View afterAnswerView;
+    private View resultButtonsContainer;
 
     private FicheModel currentFiche;
-
+    private MediaPlayer player;
+    private AnimationsHelper animationsHelper;
 
     @Override
     protected void customOnCreate() {
         setContentView(R.layout.activity_game);
 
+        animationsHelper = new AnimationsHelper(this);
+        player = new MediaPlayer();
         ficheText = (TextView) findViewById(R.id.ficheTask);
         showAnswer = (Button) findViewById(R.id.answerButton);
         knowButton = (Button) findViewById(R.id.know_button);
         dontKnowButton = (Button) findViewById(R.id.dont_know_button);
         soundButton = (ImageView) findViewById(R.id.soundButton);
-        afterAnswerView = findViewById(R.id.afterAnswerView);
+        resultButtonsContainer = findViewById(R.id.resultButtonsContainer);
 
         clickListenersInit();
         loadTasksFromDatabase();
         loadRandomTask();
-        refreshFicheText();
+        refreshFicheText(LANGUAGE_MODE == LanguageMode.PL_TO_ENG ? FicheSide.POLISH : FicheSide.ENGLISH);
     }
 
     private void clickListenersInit() {
@@ -55,43 +61,86 @@ public class GameActivity extends BaseActivity {
                 playSound();
             }
         });
+
+        knowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 if(!animationsHelper.canTouchButton())
+                    return;
+                currentFiche.setStatus(FicheModel.Status.LEARNED);
+                getDatabaseHelper().saveSingleFiche(currentFiche);
+                loadRandomTask();
+                refreshFicheText(LANGUAGE_MODE == LanguageMode.PL_TO_ENG ? FicheSide.POLISH : FicheSide.ENGLISH);
+                animationsHelper.onResultButtonClickAnimation();
+            }
+        });
+
+        dontKnowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!animationsHelper.canTouchButton())
+                    return;
+                currentFiche.setStatus(FicheModel.Status.NOT_LEARNED);
+                getDatabaseHelper().saveSingleFiche(currentFiche);
+                loadRandomTask();
+                refreshFicheText(LANGUAGE_MODE == LanguageMode.PL_TO_ENG ? FicheSide.POLISH : FicheSide.ENGLISH);
+                animationsHelper.onResultButtonClickAnimation();
+            }
+        });
+
+        showAnswer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!animationsHelper.canTouchButton())
+                    return;
+                refreshFicheText(LANGUAGE_MODE == LanguageMode.PL_TO_ENG ? FicheSide.ENGLISH : FicheSide.POLISH);
+                animationsHelper.onShowAnswerButtonStartAnimation();
+            }
+        });
     }
 
     private void loadTasksFromDatabase() {
-        if (fiches == null) {
-            fiches = getDatabaseHelper().getFichesFromDatabase();
-        }
+        fiches = getDatabaseHelper().getFichesFromDatabase(GAME_MODE);
     }
 
     private void loadRandomTask() {
+        System.out .println(GAME_MODE+":"+fiches.size());
         currentFiche = fiches.get(new Random().nextInt(fiches.size()));
     }
 
-    private void refreshFicheText() {
-        ficheText.setText(currentFiche.getEngValue());
-    }
-
-    private void setVisibilityAnswerButton(boolean visibility) {
-        showAnswer.setVisibility(visibility ? View.VISIBLE : View.GONE);
-    }
-
-    private void setVisibilityAfterAnswerView(boolean visibility) {
-        afterAnswerView.setVisibility(visibility ? View.VISIBLE : View.GONE);
+    private void refreshFicheText(FicheSide ficheSide) {
+        switch (ficheSide) {
+            case POLISH:
+                ficheText.setText(currentFiche.getPlValue());
+                break;
+            case ENGLISH:
+                ficheText.setText(currentFiche.getEngValue());
+                break;
+        }
+        if(currentFiche.getSoundPath() == null || currentFiche.getSoundPath().equals("") )
+            soundButton.setVisibility(View.INVISIBLE);
+        else
+            soundButton.setVisibility(View.VISIBLE);
     }
 
     private void playSound() {
+        if(player.isPlaying()){
+            return;
+        }
+
         if (!isOnline()) {
-            showOkMsgBox("", "No internet connection", new DialogInterface.OnClickListener() {
+            showOkMsgBox("", getString(R.string.no_network), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-
                 }
             });
             return;
         }
 
+
         try {
-            MediaPlayer player = new MediaPlayer();
+            System.out.println(currentFiche.getSoundPath());
+            player = new MediaPlayer();
             player.setAudioStreamType(AudioManager.STREAM_MUSIC);
             player.setDataSource(ServiceType.SERVER_PATH + "sound/" + currentFiche.getSoundPath());
             player.prepare();
@@ -101,7 +150,23 @@ public class GameActivity extends BaseActivity {
         }
     }
 
+    public static void setLanguageMode(LanguageMode languageMode) {
+        GameActivity.LANGUAGE_MODE = languageMode;
+    }
+
     public static void setGameMode(GameMode gameMode) {
-        GameActivity.gameMode = gameMode;
+        GAME_MODE = gameMode;
+    }
+
+    public View getResultButtonsContainer() {
+        return resultButtonsContainer;
+    }
+
+    public Button getShowAnswer() {
+        return showAnswer;
+    }
+
+    public TextView getFicheText() {
+        return ficheText;
     }
 }

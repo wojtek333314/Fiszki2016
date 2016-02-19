@@ -3,23 +3,110 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/logo_lips"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:scaleType="centerInside"
-        android:padding="@dimen/FicheButtonBigPadding" />
-
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
-        android:layout_below="@+id/imgLogo"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/tv_ddownload" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
+            android:id="@+id/linearLayout"
+            android:layout_weight="1"
+            android:weightSum="2.5" >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView4"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/logo_lips"
+                android:scaleType="centerInside"
+                android:layout_weight="1.5"
+                android:padding="@dimen/FicheButtonBigPadding" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Fiszki"
+                android:id="@+id/textView3"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="0.76"
+            android:weightSum="2.61"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/linearLayout3"
+                android:layout_weight="1.61" >
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/button"
+                    android:text="Ćwicz"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_3"
+                    android:paddingBottom="@dimen/FicheButtonBigPadding" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_below="@+id/linearLayout3"
+                android:layout_alignParentBottom="false"
+                android:layout_weight="1"
+                android:weightSum="2.61" >
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/button2"
+                    android:layout_alignTop="@+id/button"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:text="Statystyki"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_2"
+                    android:layout_alignParentBottom="true"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/button3"
+                    android:text="Dodaj"
+                    android:textColor="@color/white"
+                    android:layout_weight="1.61"
+                    android:background="@drawable/button_1" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"

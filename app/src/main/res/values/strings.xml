@@ -12,9 +12,10 @@
     <string name="polish_word">Polskie słowo</string>
     <string name="english_word">Angielskie słowo</string>
     <string name="create_fiche">Stwórz fiszkę</string>
+    <string name="learn_more_info">Musisz nauczyć się co najmniej 30 fiszek dla powtórki</string>
 
-    <string name="add_fiche_instruction">Ty możesz zostać współtwóprcą aplikacji!
-    Wystarczy, że dodasz wymyśloną przez siebie fiszkę, a my po jej zweryfikowaniu dodamy ją do bazy!</string>
+    <string name="add_fiche_instruction">Pomóż nam rozwijać aplikację!
+    Wystarczy, że dodasz wymyśloną przez siebie fiszkę, a my po jej zweryfikowaniu udostępnimy dla użytkowników!</string>
 
 
     <string name="fill_all_fields">Uzupełnij wszystkie pola</string>

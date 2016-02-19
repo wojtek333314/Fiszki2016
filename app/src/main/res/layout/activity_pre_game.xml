@@ -29,11 +29,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/engToPl"
-            android:id="@+id/rb_ang_pl"
+            android:id="@+id/rb_eng_pl"
             android:checked="true"
             android:layout_below="@+id/imageView2"
-            android:layout_alignLeft="@+id/rb_pl_ang"
-            android:layout_alignStart="@+id/rb_pl_ang"
+            android:layout_alignLeft="@+id/rb_pl_eng"
+            android:layout_alignStart="@+id/rb_pl_eng"
             android:singleLine="false"
             android:gravity="center_horizontal"
             android:layout_margin="@dimen/layout_margin_normal" />
@@ -42,9 +42,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/plToEng"
-            android:id="@+id/rb_pl_ang"
+            android:id="@+id/rb_pl_eng"
             android:checked="false"
-            android:layout_below="@+id/rb_ang_pl"
+            android:layout_below="@+id/rb_eng_pl"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
             android:layout_margin="@dimen/layout_margin_normal" />
@@ -69,7 +69,7 @@
             android:text="Powtarzaj"
             android:layout_toLeftOf="@+id/bt_learnNew"
             android:layout_toStartOf="@+id/bt_learnNew"
-            android:layout_below="@+id/rb_pl_ang"
+            android:layout_below="@+id/rb_pl_eng"
             android:background="@drawable/button_1"
             android:layout_weight="1" />
 
@@ -81,7 +81,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_below="@+id/rb_pl_ang"
+            android:layout_below="@+id/rb_pl_eng"
             android:background="@drawable/button_2"
             android:layout_weight="1" />
     </LinearLayout>

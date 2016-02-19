@@ -1,13 +1,10 @@
 package brotherhood.fichesenglish.activities;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import brotherhood.fichesenglish.R;
-import brotherhood.fichesenglish.database.DatabaseHelper;
 import brotherhood.fichesenglish.utils.BaseActivity;
 
 public class MenuActivity extends BaseActivity {
@@ -20,9 +17,6 @@ public class MenuActivity extends BaseActivity {
         Button bt_stats = (Button) findViewById(R.id.bt_stats);
         Button bt_addFishe = (Button) findViewById(R.id.bt_addFische);
 
-        DatabaseHelper dtbh = new DatabaseHelper(getApplicationContext());
-
-        System.out.println(dtbh.getFichesFromDatabase().get(0).getEngValue());
 
         bt_practice.setOnClickListener(new View.OnClickListener() {
             @Override
