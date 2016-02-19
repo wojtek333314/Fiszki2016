@@ -58,9 +58,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/learn_time"
             android:id="@+id/textView7"
-            android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/textView8"
-            android:layout_toStartOf="@+id/textView8" />
+            android:layout_alignParentBottom="true" />
 
         <ProgressBar
             android:id="@+id/toLearnBackground"
@@ -103,37 +101,6 @@
             android:layout_below="@+id/textView8"
             android:layout_marginTop="@dimen/FicheButtonBigPadding" />
 
-        <ProgressBar
-            android:id="@+id/totalLearnTimeBackGround"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:max="100"
-            android:progress="1"
-            android:progressDrawable="@drawable/fiche_progress_bar_grey"
-            android:secondaryProgress="100"
-            android:layout_below="@+id/textView7"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:indeterminate="false"
-            android:visibility="invisible" />
-
-        <ProgressBar
-            android:id="@+id/totalLearnTime"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:max="100"
-            android:progress="1"
-            android:progressDrawable="@drawable/fiche_progress_bar_blue"
-            android:secondaryProgress="56"
-            android:layout_below="@+id/textView7"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:indeterminate="false"
-            android:visibility="invisible" />
-
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -146,38 +113,6 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="5dp" />
-
-        <ProgressBar
-            android:id="@+id/dailyLearnTimeBackground"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:max="100"
-            android:progress="1"
-            android:progressDrawable="@drawable/fiche_progress_bar_grey"
-            android:secondaryProgress="100"
-            android:layout_marginTop="61dp"
-            android:layout_below="@+id/totalLearnTime"
-            android:layout_alignRight="@+id/tv_daily_time_learn_value"
-            android:layout_alignEnd="@+id/tv_daily_time_learn_value"
-            android:indeterminate="false"
-            android:visibility="invisible" />
-
-        <ProgressBar
-            android:id="@+id/dailyLearnTime"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:max="100"
-            android:progress="1"
-            android:progressDrawable="@drawable/fiche_progress_bar_blue"
-            android:secondaryProgress="32"
-            android:layout_marginTop="61dp"
-            android:layout_below="@+id/totalLearnTime"
-            android:layout_alignRight="@+id/tv_daily_time_learn_value"
-            android:layout_alignEnd="@+id/tv_daily_time_learn_value"
-            android:indeterminate="false"
-            android:visibility="invisible" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -226,30 +161,7 @@
             android:text="@string/zero_minutes"
             android:id="@+id/tv_time_learn_value"
             android:layout_alignBottom="@+id/textView7"
-            android:layout_alignTop="@+id/textView7"
-            android:layout_alignLeft="@+id/tv_daily_time_learn_value"
-            android:layout_alignStart="@+id/tv_daily_time_learn_value" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/daily_learn_time"
-            android:id="@+id/textView9"
-            android:layout_marginBottom="27dp"
-            android:layout_alignBottom="@+id/dailyLearnTime"
-            android:visibility="invisible" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/zero_minutes"
-            android:id="@+id/tv_daily_time_learn_value"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/textView9"
-            android:visibility="invisible" />
+            android:layout_alignTop="@+id/textView7" />
 
     </RelativeLayout>
 
