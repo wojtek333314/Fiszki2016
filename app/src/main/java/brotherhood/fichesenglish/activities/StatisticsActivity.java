@@ -15,10 +15,10 @@ int i =0;
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         Button bt_progress = (Button)findViewById(R.id.bt_progress);
 
-
-        runOnUiThread(new Runnable(){
-            public void run() {
-            // progressBar.setSecondaryProgress(21);
+        bt_progress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressBar.setSecondaryProgress(21);
             }
         });
 
