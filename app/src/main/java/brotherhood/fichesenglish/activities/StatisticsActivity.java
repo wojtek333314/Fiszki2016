@@ -53,8 +53,7 @@ public class StatisticsActivity extends BaseActivity {
     // ustawienie progresbara na podstawie procentów zwróconych przez getProgressStatInt
     public void setProgress(ProgressBar progressBar, int progress) {
         progressBar.setSecondaryProgress(progress);
-    }
-
+        }
     public int getProgressStatInt(float totalSize, float actualSize) {
         return (int) ((totalSize / actualSize) * 100);
     }

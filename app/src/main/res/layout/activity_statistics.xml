@@ -122,7 +122,8 @@
             android:id="@+id/tv_to_learn_value"
             android:layout_above="@+id/toLearn"
             android:layout_alignRight="@+id/textView8"
-            android:layout_alignEnd="@+id/textView8" />
+            android:layout_alignEnd="@+id/textView8"
+            android:layout_marginBottom="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -130,9 +131,10 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/zero_pre_x"
             android:id="@+id/tv_learning_value"
-            android:layout_above="@+id/inProgress"
-            android:layout_alignRight="@+id/textView8"
-            android:layout_alignEnd="@+id/textView8" />
+            android:layout_above="@+id/inProgressBackground"
+            android:layout_alignLeft="@+id/tv_to_learn_value"
+            android:layout_alignStart="@+id/tv_to_learn_value"
+            android:layout_marginBottom="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -142,7 +144,8 @@
             android:id="@+id/tv_to_learn_percent"
             android:layout_above="@+id/toLearn"
             android:layout_alignRight="@+id/tv_time_learn_value"
-            android:layout_alignEnd="@+id/tv_time_learn_value" />
+            android:layout_alignEnd="@+id/tv_time_learn_value"
+            android:layout_marginBottom="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -152,7 +155,8 @@
             android:id="@+id/tv_learning_percent"
             android:layout_alignTop="@+id/tv_learning_value"
             android:layout_alignRight="@+id/tv_to_learn_percent"
-            android:layout_alignEnd="@+id/tv_to_learn_percent" />
+            android:layout_alignEnd="@+id/tv_to_learn_percent"
+            android:layout_marginBottom="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
