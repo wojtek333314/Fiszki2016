@@ -7,28 +7,188 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="brotherhood.fichesenglish.activities.StatisticsActivity">
 
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyleHorizontal"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:max="100"
-        android:progress="10"
-        android:progressDrawable="@drawable/fiche_progress_bar"
-        android:secondaryProgress="45"
-        android:layout_centerVertical="true"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout2">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/bt_progress"
-        android:background="@drawable/button_1"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="63dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/your_progresses"
+            android:id="@+id/textView8"
+            android:textColor="@color/mainColorGreen"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <ProgressBar
+            android:id="@+id/inProgress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:max="100"
+            android:progress="1"
+            android:progressDrawable="@drawable/fiche_progress_bar_red"
+            android:secondaryProgress="75"
+            android:layout_below="@+id/textView6"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:indeterminate="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/learn_time"
+            android:id="@+id/textView7"
+            android:layout_below="@+id/inProgress"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="5dp" />
+
+        <ProgressBar
+            android:id="@+id/toLearn"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:max="100"
+            android:progress="1"
+            android:progressDrawable="@drawable/fiche_progress_bar_green"
+            android:secondaryProgress="95"
+            android:layout_below="@+id/textView5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:indeterminate="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/to_learn"
+            android:id="@+id/textView5"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="5dp" />
+
+        <ProgressBar
+            android:id="@+id/totalLearnTime"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:max="100"
+            android:progress="1"
+            android:progressDrawable="@drawable/fiche_progress_bar_blue"
+            android:secondaryProgress="56"
+            android:layout_below="@+id/textView7"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:indeterminate="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/in_progress"
+            android:id="@+id/textView6"
+            android:layout_below="@+id/toLearn"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="5dp" />
+
+        <ProgressBar
+            android:id="@+id/dailyLearnTime"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:max="100"
+            android:progress="1"
+            android:progressDrawable="@drawable/fiche_progress_bar_blue"
+            android:secondaryProgress="32"
+            android:layout_marginTop="61dp"
+            android:layout_below="@+id/totalLearnTime"
+            android:layout_alignRight="@+id/tv_daily_time_learn_value"
+            android:layout_alignEnd="@+id/tv_daily_time_learn_value"
+            android:indeterminate="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/zero_pre_x"
+            android:id="@+id/tv_to_learn_value"
+            android:layout_above="@+id/toLearn"
+            android:layout_alignRight="@+id/textView8"
+            android:layout_alignEnd="@+id/textView8" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/zero_pre_x"
+            android:id="@+id/tv_learning_value"
+            android:layout_above="@+id/inProgress"
+            android:layout_alignRight="@+id/textView8"
+            android:layout_alignEnd="@+id/textView8" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/zero_percent"
+            android:id="@+id/tv_to_learn_percent"
+            android:layout_above="@+id/toLearn"
+            android:layout_alignRight="@+id/tv_time_learn_value"
+            android:layout_alignEnd="@+id/tv_time_learn_value" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/zero_percent"
+            android:id="@+id/tv_learning_percent"
+            android:layout_alignTop="@+id/tv_learning_value"
+            android:layout_alignRight="@+id/tv_to_learn_percent"
+            android:layout_alignEnd="@+id/tv_to_learn_percent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/zero_minutes"
+            android:id="@+id/tv_time_learn_value"
+            android:layout_alignBottom="@+id/textView7"
+            android:layout_alignTop="@+id/textView7"
+            android:layout_alignLeft="@+id/tv_daily_time_learn_value"
+            android:layout_alignStart="@+id/tv_daily_time_learn_value" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/daily_learn_time"
+            android:id="@+id/textView9"
+            android:layout_marginBottom="27dp"
+            android:layout_alignBottom="@+id/dailyLearnTime" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/zero_minutes"
+            android:id="@+id/tv_daily_time_learn_value"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/textView9" />
+
+    </RelativeLayout>
 
 
     <!--  <ProgressBar

@@ -12,7 +12,16 @@
     <string name="polish_word">Polskie słowo</string>
     <string name="english_word">Angielskie słowo</string>
     <string name="create_fiche">Stwórz fiszkę</string>
+    <string name="your_stats">Twoje statystyki</string>
     <string name="learn_more_info">Musisz nauczyć się co najmniej 30 fiszek dla powtórki</string>
+    <string name="in_progress">W trakcie nauki</string>
+    <string name="to_learn">Do nauczenia się</string>
+    <string name="learn_time">Łączny czas nauki</string>
+    <string name="daily_learn_time">Dzienny czas nauki</string>
+    <string name="your_progresses">Twoje postępy</string>
+    <string name="zero_percent">0%</string>
+    <string name="zero_minutes">dd:hh:mm:ss</string>
+    <string name="zero_pre_x">0/100</string>
 
     <string name="add_fiche_instruction">Pomóż nam rozwijać aplikację!
     Wystarczy, że dodasz wymyśloną przez siebie fiszkę, a my po jej zweryfikowaniu udostępnimy dla użytkowników!</string>
