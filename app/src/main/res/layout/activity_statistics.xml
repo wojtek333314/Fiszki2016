@@ -26,6 +26,20 @@
             android:layout_centerHorizontal="true" />
 
         <ProgressBar
+            android:id="@+id/inProgressBackground"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:max="100"
+            android:progress="1"
+            android:progressDrawable="@drawable/fiche_progress_bar_grey"
+            android:secondaryProgress="100"
+            android:layout_below="@+id/textView6"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:indeterminate="false" />
+
+        <ProgressBar
             android:id="@+id/inProgress"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
@@ -50,6 +64,20 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="5dp" />
+
+        <ProgressBar
+            android:id="@+id/toLearnBackground"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:max="100"
+            android:progress="1"
+            android:progressDrawable="@drawable/fiche_progress_bar_grey"
+            android:secondaryProgress="100"
+            android:layout_below="@+id/textView5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:indeterminate="false" />
 
         <ProgressBar
             android:id="@+id/toLearn"
@@ -78,6 +106,20 @@
             android:layout_marginBottom="5dp" />
 
         <ProgressBar
+            android:id="@+id/totalLearnTimeBackGround"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:max="100"
+            android:progress="1"
+            android:progressDrawable="@drawable/fiche_progress_bar_grey"
+            android:secondaryProgress="100"
+            android:layout_below="@+id/textView7"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:indeterminate="false" />
+
+        <ProgressBar
             android:id="@+id/totalLearnTime"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
@@ -91,6 +133,8 @@
             android:layout_alignParentStart="true"
             android:indeterminate="false" />
 
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -102,6 +146,21 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="5dp" />
+
+        <ProgressBar
+            android:id="@+id/dailyLearnTimeBackground"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:max="100"
+            android:progress="1"
+            android:progressDrawable="@drawable/fiche_progress_bar_grey"
+            android:secondaryProgress="100"
+            android:layout_marginTop="61dp"
+            android:layout_below="@+id/totalLearnTime"
+            android:layout_alignRight="@+id/tv_daily_time_learn_value"
+            android:layout_alignEnd="@+id/tv_daily_time_learn_value"
+            android:indeterminate="false" />
 
         <ProgressBar
             android:id="@+id/dailyLearnTime"
