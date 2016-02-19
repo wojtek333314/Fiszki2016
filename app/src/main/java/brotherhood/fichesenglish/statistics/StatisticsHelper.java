@@ -19,8 +19,8 @@ public class StatisticsHelper {
         this.statisticsDatabaseHelper = new StatisticsDatabaseHelper(context);
     }
 
-    public float getPercentageProgress(){
-        return ((float)databaseHelper.getLearnedFichesCount()/(float)databaseHelper.getFichesCount());
+    public int getCountOfFiches(){
+        return (int) databaseHelper.getFichesCount();
     }
 
     public int getCountOfFichesToLearn(){

@@ -23,8 +23,6 @@
     <string name="zero_minutes">dd:hh:mm:ss</string>
     <string name="zero_pre_x">0/100</string>
 
-    <string name="add_fiche_instruction">Pomóż nam rozwijać aplikację!
-    Wystarczy, że dodasz wymyśloną przez siebie fiszkę, a my po jej zweryfikowaniu udostępnimy dla użytkowników!</string>
     <string name="recreateLocal">Brak dostępu do sieci\nTworzenie bazy z pamięci lokalnej</string>
     <string name="add_fiche_instruction">Dodaj własną fiszkę do pamięci telefonu </string>
 
