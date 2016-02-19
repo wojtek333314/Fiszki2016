@@ -116,6 +116,7 @@
         android:text="@string/download_data"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="76dp" />
+        android:layout_marginBottom="76dp"
+        android:gravity="center_vertical|center_horizontal" />
 
 </RelativeLayout>
