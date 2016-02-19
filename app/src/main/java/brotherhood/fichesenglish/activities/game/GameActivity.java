@@ -15,6 +15,7 @@ import brotherhood.fichesenglish.R;
 import brotherhood.fichesenglish.activities.game.enums.FicheSide;
 import brotherhood.fichesenglish.activities.game.enums.GameMode;
 import brotherhood.fichesenglish.activities.game.enums.LanguageMode;
+import brotherhood.fichesenglish.database.StatisticsDatabaseHelper;
 import brotherhood.fichesenglish.models.FicheModel;
 import brotherhood.fichesenglish.server.enums.ServiceType;
 import brotherhood.fichesenglish.utils.BaseActivity;
@@ -34,10 +35,16 @@ public class GameActivity extends BaseActivity {
     private FicheModel currentFiche;
     private MediaPlayer player;
     private AnimationsHelper animationsHelper;
+    private long startTime;
+    private int fichesLearnedCount = 0;
+
+    private StatisticsDatabaseHelper statisticsDatabaseHelper;
 
     @Override
     protected void customOnCreate() {
         setContentView(R.layout.activity_game);
+        statisticsDatabaseHelper = new StatisticsDatabaseHelper(this);
+        startTime = System.currentTimeMillis();
 
         animationsHelper = new AnimationsHelper(this);
         player = new MediaPlayer();
@@ -69,6 +76,8 @@ public class GameActivity extends BaseActivity {
                     return;
                 currentFiche.setStatus(FicheModel.Status.LEARNED);
                 getDatabaseHelper().saveSingleFiche(currentFiche);
+                if(!getDatabaseHelper().isFicheWasLearned(currentFiche.getId()))
+                    fichesLearnedCount++;
                 loadRandomTask();
                 refreshFicheText(LANGUAGE_MODE == LanguageMode.PL_TO_ENG ? FicheSide.POLISH : FicheSide.ENGLISH);
                 animationsHelper.onResultButtonClickAnimation();
@@ -104,7 +113,6 @@ public class GameActivity extends BaseActivity {
     }
 
     private void loadRandomTask() {
-        System.out .println(GAME_MODE+":"+fiches.size());
         currentFiche = fiches.get(new Random().nextInt(fiches.size()));
     }
 
@@ -139,7 +147,6 @@ public class GameActivity extends BaseActivity {
 
 
         try {
-            System.out.println(currentFiche.getSoundPath());
             player = new MediaPlayer();
             player.setAudioStreamType(AudioManager.STREAM_MUSIC);
             player.setDataSource(ServiceType.SERVER_PATH + "sound/" + currentFiche.getSoundPath());
@@ -168,5 +175,19 @@ public class GameActivity extends BaseActivity {
 
     public TextView getFicheText() {
         return ficheText;
+    }
+
+    @Override
+    protected void onPause() {
+        long timeSpend = System.currentTimeMillis() - startTime;
+        statisticsDatabaseHelper.addCountOfLearnedFiches(fichesLearnedCount);
+        statisticsDatabaseHelper.addDailyTime(timeSpend);
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        startTime = System.currentTimeMillis();
+        super.onResume();
     }
 }
