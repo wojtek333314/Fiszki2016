@@ -133,6 +133,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return s.simpleQueryForLong();
     }
 
+    public long getFichesCount(){
+        SQLiteStatement s = getReadableDatabase().compileStatement("select count(*) from " + TABLE_NAME
+                + " ; ");
+        return s.simpleQueryForLong();
+    }
+
+    public boolean isFicheWasLearned(int id){
+        SQLiteStatement s = getReadableDatabase().compileStatement("select "+STATUS+" from " + TABLE_NAME
+                + " where id="+id+" ; ");
+        return s.simpleQueryForLong()==1;
+    }
+
     /**
      * Zapobiega wyciekowi z SQLLiteConnection
      *

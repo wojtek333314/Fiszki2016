@@ -23,4 +23,13 @@ public class SharedPrefsHelper {
         editor.putString(key,value);
         editor.commit();
     }
+
+    public long getLong(String key){
+        return sharedPreferences.getLong(key,0);
+    }
+
+    public void putLong(String key,long value){
+        editor.putLong(key,value);
+        editor.commit();
+    }
 }

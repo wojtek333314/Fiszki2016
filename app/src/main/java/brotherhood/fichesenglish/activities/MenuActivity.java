@@ -41,5 +41,6 @@ public class MenuActivity extends BaseActivity {
                 startActivity(toAddFischeActivity);
             }
         });
+
     }
 }
