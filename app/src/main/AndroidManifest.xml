@@ -7,6 +7,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
+        android:screenOrientation="portrait"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
@@ -16,15 +17,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.PreGameActivity" >
+        <activity android:name=".activities.PreGameActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activities.StatisticsActivity" >
+        <activity android:name=".activities.StatisticsActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activities.AddFischeActivity" >
+        <activity android:name=".activities.AddFischeActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activities.game.GameActivity" >
+        <activity android:name=".activities.game.GameActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activities.MenuActivity" >
+        <activity android:name=".activities.MenuActivity"  android:screenOrientation="portrait">
         </activity>
     </application>
 
